@@ -1,0 +1,24 @@
+<md-toolbar class="ed-navbar">
+    <div class="md-toolbar-tools">
+        <md-button class="md-icon-button" 
+                   aria-label="Settings" 
+                   ng-click="switch('principal')">
+            <md-icon>
+                <i class="material-icons">
+                    menu
+                </i>
+            </md-icon>
+        </md-button>
+        <img src="../../imagenes/logoedilar.jpg" alt='Logo Edilar' style="height: 30px; margin: 0px 10px;"/>
+        <h1 flex md-truncate>{{titulo_informe}} - {{seccion}}</h1>        
+        <md-button class="md-icon-button" 
+                   aria-label="Información"
+                   ng-click="mostrar_informacion($event);">
+            <md-icon>
+                <i class="material-icons">
+                    info
+                </i>
+            </md-icon>
+        </md-button>
+    </div>
+</md-toolbar>
