@@ -1,0 +1,63 @@
+<md-content layout-padding class="parametros">
+    <section layout-align="center center" layout-wrap="">
+        <md-input-container class="md-icon-float">
+            <label> Banco: </label>
+            <md-select ng-model="form.P_TEXT_1" style="width: 150px;" >
+                <md-option ng-repeat="s in opBANCOS"
+                           ng-value="s.VALUE">
+                           {{ s.TEXT }}
+                  </md-option>
+            </md-select>
+        </md-input-container>
+
+        <md-input-container>
+            <md-content layout-padding class="parametros">
+                <section layout-align="center center" layout-wrap="">
+                    <archivo-csv edi-archivocsv='DatosArchivo' delimitador='|'></archivo-csv>
+                </section>
+            </md-content>
+        </md-input-container>
+        <br/>
+
+        <md-input-container class="md-icon-float">
+            <label> Poliza: </label>
+            <input type="text"
+                   style="width: 100px;"
+                   ng-model="form.P_TEXT_2">
+        </md-input-container>
+        
+        <md-input-container class="md-icon-float">
+            <label> Fecha Quincena: </label>
+            <input type="text"
+                   style="width: 150px;"
+                   ng-model="form.P_TEXT_3">
+        </md-input-container>
+
+        <md-input-container class="md-icon-float">
+            <label> Num. Quincena: </label>
+            <input type="text"
+                   style="width: 100px;"
+                   ng-model="form.P_TEXT_4">
+        </md-input-container>
+        <br/>
+        
+        <!--Botones-->
+        <!--
+        <md-button class="md-raised md-mini md-primary" 
+                   ng-disabled="consulta==true"
+                   ng-click="cargar_datos()">
+            Consultar
+        </md-button>
+
+        <md-button class="md-raised md-mini md-primary" 
+                   ng-disabled="limpiar==true"
+                   ng-click="limpiar_campos()">
+            Limpiar
+        </md-button>
+    -->
+        <br/>
+        <md-divider></md-divider>
+        <br/>
+    </section>
+</md-content>
+<edi-grid></edi-grid>

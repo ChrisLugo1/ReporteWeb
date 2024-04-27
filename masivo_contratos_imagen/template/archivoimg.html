@@ -1,0 +1,22 @@
+<md-card style="width: 350px; display: inline-grid;">
+    <md-card-title>
+      <md-card-title-text>
+        <span class="md-headline">Visualizador de Imagenes</span>
+        <span class="md-subhead">
+            <input edi-input id="ArchivoImg" type="file" multiple="true" accept=".jpg, .png, .jpeg, .bmp"><br/>
+            Nombre del archivo: {{gridArchivoImg.info.name}}<br/>
+            Tamaño: {{gridArchivoImg.info.size}}<br/>
+            Tipo: {{gridArchivoImg.info.type}}<br/>
+            Estatus del Archivo: {{gridArchivoImg.status}}<br/>
+        </span>
+      </md-card-title-text>
+    </md-card-title>
+    <md-card-content layout="row" layout-align="space-between">
+        <div class="md-media-md card-media">
+            <img id="{{nombre}}" 
+                 class="md-card-image" 
+                 alt="Preview"
+                 style="width: 200px;">
+        </div>
+    </md-card-content>
+</md-card>

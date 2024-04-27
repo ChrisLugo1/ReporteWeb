@@ -1,0 +1,27 @@
+<md-card style="width: 350px; display: inline-grid;">
+  <md-card-title>
+    <md-card-title-text>
+      <span class="md-headline">Archivo CSV/TXT</span>
+          <span class="md-subhead">
+              <md-radio-group ng-model="delimitador" style="width: 150px; display: inline-block;">
+                  <md-radio-button value="|" class="md-primary"> Pipes </md-radio-button>
+                  <md-radio-button value=","> Comas </md-radio-button>
+              </md-radio-group><br/>
+          <input edi-input type="file" multiple="true"><br/>
+          Nombre del archivo: {{gridArchivo.info.name}}<br/>
+          Tamaño: {{gridArchivo.info.size}}<br/>
+          Tipo: {{gridArchivo.info.type}}<br/>
+          Estatus del Archivo: {{gridArchivo.status}}<br/>
+      </span>
+      <!--<span class="md-subhead">
+        <md-input-container>
+          <label> Tipo de Imagen </label>
+          <md-select ng-model="form.P_TIPO_IMAGEN" style="width: 250px;">
+              <md-option ng-value="tipoimg.VALUE" ng-repeat="tipoimg in opTIPO_IMAGEN">{{tipoimg.TEXT}}</md-option>
+          </md-select>
+        </md-input-container>
+      </span>
+      -->
+    </md-card-title-text>
+  </md-card-title>
+</md-card>

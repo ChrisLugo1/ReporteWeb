@@ -1,0 +1,118 @@
+<div class="grid">    
+    <div class="md-toolbar-tools grid-header">
+        <div class="ctrls-left">
+            <md-input-container>
+                <label>Mostrar: </label>
+                <md-select ng-model="grid.NUMREG" style="min-width: 200px;">
+                    <md-option ng-value="r.VALUE" ng-repeat="r in grid.opNUMREG">{{r.TEXT}}</md-option>
+                </md-select>
+            </md-input-container>
+        </div>
+        <div class="flex ctrls-titulo">
+            {{titulo_informe}}
+        </div>
+        <div class="ctrls-right">
+            <md-button class="md-fab md-mini md-primary md-icon-button"
+                       aria-label="Descargar Excel"
+                       ng-disabled="grid.informacion.datos.length==0"
+                       ng-click="exportar_excel()">
+                       <md-tooltip md-direction="top">Exportar EXCEL</md-tooltip>
+                <md-icon>
+                    <i class="material-icons">
+                        attach_file
+                    </i>
+                </md-icon>
+            </md-button>
+            <md-button class="md-fab md-mini md-primary md-icon-button"
+                       aria-label="Procesar Info"
+                       ng-disabled="grid.informacion.datos.length==0||grid.informacion.datos.length==null"
+                       ng-click="procesar_info()">
+                       <md-tooltip md-direction="top">Cargar Datos</md-tooltip>
+                    <md-icon>
+                    <i class="material-icons">
+                        build
+                    </i>
+                </md-icon>
+            </md-button>
+        </div>
+    </div>
+    <!-- tabla principal x poliza -->
+    <md-content flex layout-padding style="width: 100%; overflow-x: scroll; background-color: #FFFFFF;" ng-show="CARGA_ARCHIVO" ng-hide="OCULTA_ARCHIVO">
+        <md-progress-linear md-mode="indeterminate" ng-show="CARGANDO"></md-progress-linear>
+        <table class="table_azul" ng-hide="CARGANDO">
+            <tr>
+                <th ng-repeat="c in grid.informacion.campos">
+                    {{c.COLUMNA | campos}}
+                </th>
+            </tr>
+            <tr ng-repeat="(i,arrD) in grid.informacion.datos"
+                ng-if="i>=grid.paginas.MIN&&i<=grid.paginas.MAX">
+                <td ng-repeat="c in grid.informacion.campos" class="{{c.TIPO}}" ng-hide="c.NOMBRE=='CORRECTOS'">
+                    <div ng-if="c.TIPO=='VARCHAR2'">{{arrD[c.NOMBRE]}}</div>
+                    <div ng-if="c.TIPO=='NUMBER'" style="text-align: right;">{{arrD[c.NOMBRE] | number : 2}}</div>
+                    <div ng-if="c.TIPO=='MONEDA'" style="text-align: right;">$ {{arrD[c.NOMBRE] | number : 2}}</div>
+                </td>
+                <td ng-repeat="c in grid.informacion.campos" class="{{c.TIPO}}" ng-show="c.NOMBRE=='CORRECTOS'">
+                    <div ng-repeat="files_c in grid.informacion.CORRECTOS">
+                        <div ng-show="arrD.EVENTO==files_c.EVENTO" style="color: blue;">
+                            ✓
+                        </div>
+                    </div>
+                    <div ng-repeat="files_i in grid.informacion.INCORRECTOS">
+                        <div ng-if="arrD.EVENTO==files_i.EVENTO" style="color: red;">
+                            X
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="{{grid.informacion.campos.length}}"
+                    ng-show="grid.informacion.datos.length==0||grid.informacion.datos.length==null">
+                    Sin informacion
+                </td>
+            </tr>
+            <tr ng-if="grid.sumas=='SI'">
+                <td class="VARCHAR2">
+                    <div></div>
+                </td>
+                <td ng-repeat="c in grid.informacion.campos" class="{{c.TIPO}}">
+                    <div ng-if="c.TIPO=='VARCHAR2'">{{grid.TOTALES[c.NOMBRE]}}</div>
+                    <div ng-if="c.TIPO=='NUMBER'" style="text-align: right;">{{grid.TOTALES[c.NOMBRE] | number : 2}}</div>
+                    <div ng-if="c.TIPO=='MONEDA'" style="text-align: right;">$ {{grid.TOTALES[c.NOMBRE] | number : 2}}</div>
+                </td>
+            </tr>
+        </table>
+    </md-content>
+    <div class="md-toolbar-tools grid_footer">
+        <div class="text_info">
+            Mostrando {{grid.NUMREG}} de {{grid.informacion.datos.length}} registros
+        </div>
+        <div class="flex">
+            Paginas:<md-button class="md-icon-button" ng-click="grid.paginas.ACTUAL=grid.paginas.ACTUAL-1">
+                        <i class="material-icons">
+                        chevron_left
+                        </i>
+                    </md-button>
+                    <md-button class="md-icon-button" ng-click="grid.paginas.ACTUAL=1">
+                        <i class="material-icons">
+                        first_page
+                        </i>
+                    </md-button>
+                    {{grid.paginas.ACTUAL}}
+                    <md-button class="md-icon-button" ng-click="grid.paginas.ACTUAL=grid.paginas.TOTAL">
+                        <i class="material-icons">
+                        last_page
+                        </i>
+                    </md-button>
+                     <md-button class="md-icon-button" ng-click="grid.paginas.ACTUAL=grid.paginas.ACTUAL+1">
+                        <i class="material-icons">
+                        chevron_right
+                        </i>
+                    </md-button> 
+                     de {{grid.paginas.TOTAL}}
+        </div>
+        <div class="ctrl_paginas">
+            
+        </div>
+    </div>
+<div>

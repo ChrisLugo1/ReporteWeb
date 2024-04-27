@@ -1,0 +1,45 @@
+<md-dialog aria-label="Información de la App">
+  <form ng-cloak>
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <md-icon style="margin-right: 20px;">
+            <i class="material-icons">
+                info
+            </i>
+        </md-icon>
+        <h2> Información 2.0 </h2>
+        <span flex></span>
+        <md-button class="md-icon-button" ng-click="cerrar_dialogo();">
+            <md-icon aria-label="Close dialog">
+                <i class="material-icons">
+                    close
+                </i>
+            </md-icon>
+        </md-button>
+      </div>
+    </md-toolbar>
+    <md-dialog-content>
+        <div class="md-dialog-content">
+          <h2>Instrucciones</h2>
+          <p>
+            El modulo permite asignar una imagen para diferentes contratos y notas de credito a partir de un archivo CSV.<br/>
+            1-.El archivo CSV debera contener como Cabeceras: CONTRATO_PRIN|AFILIADO|EVENTO<br/>
+            2-.Al leer el archivo CSV/TXT el sistema mostrara una tabla con los datos del archivo mas otras columnas.<br/>
+            3-.Se mostrara las columnas de Nombre, Estado y Estatus(campo vacio) para validar si son correctos.<br/>
+            4-.Se activaran los botones Exportar Excel y Cargar Datos.<br/>
+            5-.En Visualizador de Imagenes solo acepta un solo archivo y en formato (JPG,PNG,BMP).<br/>
+            6-.El Boton Cargar Datos comenzara a asignar la imagen a los contratos y a las Notas de Credito que <b>No Existan</b>.<br/>
+            Se motrara los Estatus con<b>(✓)</b> se asigno correctamente. <b>(X)</b> fallo la asignacion porque ya existe la nota de credito 4.<br/>
+            AD 19/12/2022<br/>
+          </p>
+        </div>
+    </md-dialog-content>
+    <md-dialog-actions layout="row" layout-padding>
+        <span flex></span>
+        <md-button class="md-primary"
+                   ng-click="responder('Enterado');">
+            Enterado
+        </md-button>
+    </md-dialog-actions>
+  </form>
+</md-dialog>
