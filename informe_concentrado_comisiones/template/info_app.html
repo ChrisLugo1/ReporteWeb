@@ -1,0 +1,37 @@
+<md-dialog aria-label="Información de la App">
+  <form ng-cloak>
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <md-icon style="margin-right: 20px;">
+            <i class="material-icons">
+                info
+            </i>
+        </md-icon>
+        <h2> Información 2.0 </h2>
+        <span flex></span>
+        <md-button class="md-icon-button" ng-click="cerrar_dialogo();">
+            <md-icon aria-label="Close dialog">
+                <i class="material-icons">
+                    close
+                </i>
+            </md-icon>
+        </md-button>
+      </div>
+    </md-toolbar>
+    <md-dialog-content>
+        <div class="md-dialog-content">
+          <h2>Caracteristicas</h2>
+          <p>
+            Información de la App (AD 09/07/2021)
+          </p>
+        </div>
+    </md-dialog-content>
+    <md-dialog-actions layout="row" layout-padding>
+        <span flex></span>
+        <md-button class="md-primary"
+                   ng-click="responder('Enterado');">
+            Enterado
+        </md-button>
+    </md-dialog-actions>
+  </form>
+</md-dialog>
